@@ -1,0 +1,193 @@
+/* ----------- GLOBAL ----------- */
+body {
+    background: linear-gradient(135deg, #090d21, #0f1435);
+    font-family: "Poppins", sans-serif;
+    color: white;
+    text-align: center;
+    padding-bottom: 60px;
+    overflow-x: hidden;
+}
+
+/* Title Glow Animation */
+.title {
+    font-size: 48px;
+    margin-top: 40px;
+    background: linear-gradient(90deg, #00d4ff, #00f0b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    animation: glowText 3s ease-in-out infinite;
+}
+
+@keyframes glowText {
+    0% { text-shadow: 0 0 10px rgba(0,255,255,0.5); }
+    50% { text-shadow: 0 0 30px rgba(0,255,180,0.9); }
+    100% { text-shadow: 0 0 10px rgba(0,255,255,0.5); }
+}
+
+/* Subtitle Fade In */
+.subtitle {
+    margin-top: 15px;
+    font-size: 18px;
+    opacity: 0;
+    animation: fadeIn 1.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* ----------- SELECTED SYMPTOM BOX ----------- */
+.selected-box {
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    margin-top: 40px;
+    opacity: 0;
+    animation: slideDown 1s ease forwards;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+#selectedSymptoms {
+    width: 50%;
+    padding: 18px;
+    border-radius: 12px 0 0 12px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: #111631;
+    color: #fff;
+    transition: 0.3s;
+}
+
+/* Input Glow on Focus */
+#selectedSymptoms:focus {
+    box-shadow: 0 0 12px #00ffc3;
+}
+
+/* Predict Button */
+.predict-btn {
+    background: #1cd85f;
+    border: none;
+    padding: 18px 35px;
+    border-radius: 0 12px 12px 0;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* Predict button hover neon effect */
+.predict-btn:hover {
+    background: #25f56a;
+    box-shadow: 0 0 20px rgba(0,255,140,0.8);
+    transform: scale(1.05);
+}
+
+/* ----------- SEARCH BOX ----------- */
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+#searchInput {
+    width: 25%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 2px solid #5b4b8a;
+    background: #0e1330;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Search Glow */
+#searchInput:focus {
+    border-color: #8d73ff;
+    box-shadow: 0 0 12px #8d73ff;
+}
+
+/* ----------- SUGGESTIONS ----------- */
+.suggestions-box {
+    width: 25%;
+    margin: 0 auto;
+    background: #131835;
+    border: 1px solid #5b4b8a;
+    border-radius: 10px;
+    max-height: 180px;
+    overflow-y: auto;
+    display: none;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.suggestions-box .item {
+    padding: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s;
+}
+
+.suggestions-box .item:hover {
+    background: #392b81;
+}
+
+/* ----------- TAGS ----------- */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding: 0 40px;
+    opacity: 1;
+    animation: fadeInTags 1.5s ease forwards;
+}
+
+@keyframes fadeInTags {
+    to { opacity: 1; }
+}
+
+/* Tag Styling */
+.tag {
+    padding: 10px 20px;
+    background: #6c40ff;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    transform: scale(1);
+    opacity: 0;
+    animation: popIn 0.5s ease forwards;
+}
+
+/* Tags appearing one by one */
+.tag:nth-child(n) {
+    animation-delay: calc(0.03s * var(--i));
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Hover Glow */
+.tag:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 15px rgba(110, 85, 255, 0.7);
+}
+
+/* Selected Tag Neon Effect */
+.tag.selected {
+    background: #03dac5;
+    color: #000;
+    box-shadow: 0 0 15px #00ffd5;
+}

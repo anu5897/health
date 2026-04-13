@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Healthcare and Personalized Nutrition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+    <h1 class="title">Smart Healthcare and Personalized Nutrition</h1>
+    <p class="subtitle">
+        Understand your health better with smart symptoms analysis and personalized nutrition
+    </p>
+
+    <!-- Selected Symptoms + Predict -->
+    <div class="selected-box">
+
+        <!-- Selected symptoms will appear here -->
+        <input
+            type="text"
+            id="selectedSymptoms"
+            placeholder="Select symptoms below to get started..."
+            readonly
+        />
+
+        <!-- Predict button -->
+        <button class="predict-btn" onclick="predictDisease()">
+            Predict
+        </button>
+
+    </div>
+
+    
+
+    <!-- Search Box -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search symptoms..."  onkeyup= "filterSymptoms()">
+    </div>
+
+    <!-- Auto Suggestion Box -->
+    <div id="suggestions" class="suggestions-box"></div>
+
+    <!-- selected symptoms tags(Tags Container) -->
+    <div id="symptomTags" class="tags-container"></div>
+
+<!----JS files---->>
+    <script src="{{ url_for('static', filename='symptoms.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

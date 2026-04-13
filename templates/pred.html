@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #090d21, #0f1435);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        /* Page Title Glow */
+        h1 {
+            font-size: 42px;
+            margin-top: 50px;
+            background: linear-gradient(90deg, #00eaff, #00ffb3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            animation: titleGlow 3s infinite ease-in-out;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 15px rgba(0,255,255,0.4); }
+            50% { text-shadow: 0 0 35px rgba(0,255,180,0.9); }
+            100% { text-shadow: 0 0 15px rgba(0,255,255,0.4); }
+        }
+
+        /* The Card */
+        .result-card {
+            width: 85%;
+            max-width: 900px;
+            margin: 60px auto;
+            background: #ffffff;
+            color: #333;
+            padding: 40px;
+            border-radius: 25px;
+            text-align: left;
+            animation: slideUp 0.9s ease forwards;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-card h2 {
+            color: #5a3dff;
+            font-size: 30px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .simple-text {
+            font-size: 18px;
+            color: #444;
+            margin-top: 15px;
+            line-height: 1.7;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #6c40ff;
+            color: white;
+            font-size: 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(108, 64, 255, 0.7);
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Prediction Results</h1>
+
+
+    <div class="result-card">
+        <h2>Predicted Disease</h2>
+        <p class="simple-text">
+            {{disease }}
+        </p>    
+
+         <h3>Selected Symptoms</h3>
+         <ul class="simple-text">
+             {% for s in selected %}
+                <li>{{ s }}</li>
+             {% endfor %}
+         </ul>
+
+          <!-- Description -->
+          <h3 class="section-title">Disease Description</h3>
+          <p class="simple-text">
+               {{ description }}
+          </p>
+           
+           <!-- Diet -->
+           <h3 class="section-title">Recommended Diet</h3>
+           {% if diet %}
+               <ul class="simple-text">
+                   {% for d in diet %}
+                       <li>{{ d }}</li>
+                   {% endfor %}
+            </ul>
+            {% else %}
+                <p class="simple-text">No specific diet recommendation available.</p>
+            {% endif %}
+
+
+             <!-- Avoid -->
+             <h3 class="section-title">Foods to Avoid</h3>
+             {% if avoid %}
+                <ul class="simple-text">
+                   {% for a in avoid %}
+                     <li>{{ a }}</li>
+                   {% endfor %}
+                </ul>
+
+             {% else %}
+                <p class="simple-text">No restricted foods listed.</p>
+             {% endif %}
+
+             <a href="{{ url_for('home') }}" class="back-btn">← Back</a>
+    </div>
+
+   
+     
+
+</body>
+</html>
